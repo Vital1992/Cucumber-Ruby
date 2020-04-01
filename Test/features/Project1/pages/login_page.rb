@@ -1,5 +1,5 @@
 class LoginPage
-  attr_accessor :loginBtn,:txtUsername,:txtPassword,:btnLogin
+  #attr_accessor :loginBtn,:txtUsername,:txtPassword,:btnLogin
 
   def wait_for
     Selenium::WebDriver::Wait.new(:timeout => 30).until {yield}
@@ -9,8 +9,8 @@ class LoginPage
     @browser = browser
   end
 
-  def visit
-    @browser.get "https://www.toyotanation.com/forums/"
+  def visit(link)
+    @browser.get link
   end
 
   def clickLoginBtn()
@@ -28,7 +28,7 @@ class LoginPage
     @browser.find_element(xpath: "//input[@name='password']").send_keys (password)
   end
 
-  def clickLoginButton
+  def clickLoginButton()
     @browser.find_element(xpath: "//button[@qid='login-button']").click
   end
 

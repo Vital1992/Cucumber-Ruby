@@ -1,24 +1,22 @@
-Given(/^I launch https:\/\/www\.toyotanation\.com\/forums$/) do
+Given("I launch browser") do |table|
+  link = table.raw[1][0]
   @LoginPage = LoginPage.new(@browser)
-  @LoginPage.visit
+  @LoginPage.visit("#{link}")
 end
 
-And(/^I click on Login button$/) do
-  @LoginPage.clickLoginBtn
+And("I click on Login button") do
+  @LoginPage.clickLoginBtn()
 end
 
-And(/^I enter username$/) do
-  @LoginPage.enterUsername("QATest1")
+And("I enter {string} and {string}") do |username,password|
+  @LoginPage.enterUsername("#{username}")
+  @LoginPage.enterPassword("#{password}")
 end
 
-And(/^I enter password$/) do
-  @LoginPage.enterPassword("Qa123456789!")
+When("I click Login button") do
+  @LoginPage.clickLoginButton()
 end
 
-When(/^I click Login button$/) do
-  @LoginPage.clickLoginButton
-end
-
-Then(/^I see Home page$/) do
-  @LoginPage.verifyHomePageHeader
+Then("I see Home page") do
+  @LoginPage.verifyHomePageHeader()
 end

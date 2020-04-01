@@ -5,9 +5,11 @@ require 'selenium-webdriver'
 include Selenium
 
 #Creating WebDriver
-Selenium::WebDriver::Chrome::Service.driver_path="/Users/vitaly.cherkasov/RubymineProjects/Test/features/support/chromedriver"
-browser = Selenium::WebDriver.for :chrome
-
 Before do
+  Selenium::WebDriver::Chrome::Service.driver_path="C:/Cucumber-Ruby/Test/features/support/chromedriver.exe"
+  browser = Selenium::WebDriver.for :chrome
   @browser = browser
+end
+After do
+  @browser.quit
 end
